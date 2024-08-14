@@ -3,7 +3,7 @@ from .views import PersonalViewset
 from django.urls import path, include
 
 router = DefaultRouter()
-router.register(r'personal', PersonalViewset)
+router.register(r'personallists', PersonalViewset)
 
 urlpatterns = [
     path('', include(router.urls))

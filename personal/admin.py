@@ -3,4 +3,6 @@ from .models import Personal
 
 # Register your models here.
 
-admin.site.register(Personal)
+@admin.register(Personal)
+class PersonalAdmin(admin.ModelAdmin):
+    list_display = ('firstname', 'lastname', 'email', 'position')
