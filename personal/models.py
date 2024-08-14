@@ -9,5 +9,5 @@ class Personal(models.Model):
     email = models.EmailField()
     position = models.CharField(max_length = 50)
 
-def __str__(self):
-    return f"{self.firstname} {self.lastname}"
+    def __str__(self):
+        return f"{self.firstname} {self.lastname}"
