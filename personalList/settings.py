@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "personal",
     "rest_framework",
+    "corsheaders"
 
 ]
 
@@ -50,6 +51,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+
 ]
 
 ROOT_URLCONF = "personalList.urls"
@@ -77,11 +81,17 @@ WSGI_APPLICATION = "personalList.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',         
+        'USER': 'postgres.ayslivoeobgevafhjqiu', 
+        'PASSWORD': 'm3_db3BjQMD#UrZ',   
+        'HOST': 'aws-0-eu-central-1.pooler.supabase.com', 
+        'PORT': '6543',                  
     }
 }
+
+
 
 
 # Password validation
@@ -124,3 +134,25 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sedadir88@gmail.com'  
+EMAIL_HOST_PASSWORD = 'qfrn ubmr macv oaba'  
+
+# CORS ayarları
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
